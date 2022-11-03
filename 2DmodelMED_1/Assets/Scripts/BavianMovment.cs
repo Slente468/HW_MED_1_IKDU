@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BavianMovment : MonoBehaviour
 {
@@ -24,13 +25,20 @@ public class BavianMovment : MonoBehaviour
             bavianAnimator.SetFloat("x", movement.x);
             bavianAnimator.SetFloat("y", movement.y);
 
-            bavianAnimator.SetBool("is Walking", true);
+            bavianAnimator.SetBool("IsWalking", true);
         }
         else
         {
-            bavianAnimator.SetBool("is Walking", false);
+            bavianAnimator.SetBool("IsWalking", false);
         }
 
+        
+       
 
+    }
+    
+    private void FixedUpdate()
+    {
+        bavianBody.velocity = movement * speed;
     }
 }
